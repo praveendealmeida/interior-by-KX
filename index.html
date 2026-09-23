@@ -167,6 +167,134 @@
             100% { transform: scale(1.1); }
         }
 
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translateX(-50%) translateY(-50%);
+            z-index: -2;
+            object-fit: cover;
+        }
+
+        .video-break {
+            height: 70vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-top: 1px solid rgba(201, 169, 110, 0.1);
+            border-bottom: 1px solid rgba(201, 169, 110, 0.1);
+        }
+
+        .video-break h2 {
+            position: relative;
+            z-index: 1;
+            font-size: clamp(2rem, 5vw, 4rem);
+            color: var(--color-text-main);
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            text-shadow: 2px 2px 20px rgba(0,0,0,0.8);
+            font-family: var(--font-display);
+        }
+
+        /* Modal Gallery Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            inset: 0;
+            background-color: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(15px);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content img {
+            max-height: 80vh;
+            max-width: 100%;
+            object-fit: contain;
+            border: 1px solid rgba(201, 169, 110, 0.3);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 2rem;
+            right: 3rem;
+            color: var(--color-text-main);
+            font-size: 3rem;
+            font-weight: 300;
+            cursor: pointer;
+            transition: var(--color-accent);
+            z-index: 2001;
+        }
+        
+        .close-modal:hover { color: var(--color-accent); }
+
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(13, 13, 13, 0.5);
+            border: 1px solid var(--color-accent);
+            color: var(--color-accent);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-btn:hover { background: var(--color-accent); color: var(--color-bg); }
+        .nav-btn.prev { left: -70px; }
+        .nav-btn.next { right: -70px; }
+
+        .modal-caption-container {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .modal-caption {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            color: var(--color-accent);
+        }
+        
+        .modal-counter {
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            color: var(--color-text-muted);
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-btn { width: 40px; height: 40px; }
+            .nav-btn.prev { left: 10px; }
+            .nav-btn.next { right: 10px; }
+            .close-modal { top: 1rem; right: 1.5rem; }
+        }
+
         #hero h1 {
             font-size: clamp(3rem, 7vw, 6.5rem);
             line-height: 1.1;
@@ -351,18 +479,18 @@
             height: auto;
             display: block;
             transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            filter: grayscale(20%);
+            filter: grayscale(10%);
         }
 
         .masonry-overlay {
             position: absolute;
-            inset: 1rem; /* Creates a beautiful inner border effect */
+            inset: 1rem;
             border: 1px solid rgba(201, 169, 110, 0);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background: rgba(13, 13, 13, 0.7);
+            background: rgba(13, 13, 13, 0.75);
             opacity: 0;
             transition: var(--transition);
         }
@@ -596,7 +724,12 @@
 
     <main>
         <section id="hero">
-            <div class="hero-bg"></div>
+            <div class="hero-bg">
+                <video autoplay loop muted playsinline class="hero-video">
+                    <!-- Upload this video to your GitHub -->
+                    <source src="hero-video.mp4" type="video/mp4"> 
+                </video>
+            </div>
             <h1 class="reveal">Bespoke Elegance.<br><em>Tropical Grandeur.</em></h1>
             <p class="reveal" style="transition-delay: 0.2s;">Curating Sri Lanka's Most Exclusive Spaces</p>
             <div class="reveal" style="transition-delay: 0.4s;">
@@ -621,43 +754,62 @@
             </div>
         </section>
 
+        <section class="video-break">
+            <video autoplay loop muted playsinline class="hero-video" style="filter: brightness(0.6);">
+                 <!-- Upload this video to your GitHub -->
+                <source src="showcase-video.mp4" type="video/mp4">
+            </video>
+            <h2 class="reveal">Crafting the Extraordinary</h2>
+        </section>
+
         <section id="portfolio">
             <div class="section-header reveal">
-                <span class="section-subtitle">Selected Works</span>
-                <h2 class="section-title">The Masterpieces</h2>
+                <span class="section-subtitle">Client Projects</span>
+                <h2 class="section-title">Selected Works</h2>
             </div>
             
             <div class="masonry-grid">
-                <div class="masonry-item reveal">
-                    <img src="https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?auto=format&fit=crop&q=80&w=800" alt="Cinnamon Gardens Penthouse">
+                <!-- Image 1: Living Room -->
+                <div class="masonry-item reveal" data-project="living">
+                    <img src="1000226860.jpg" alt="Contemporary Living Space">
                     <div class="masonry-overlay">
-                        <h4>Cinnamon Gardens</h4>
-                        <p>Penthouse Collection</p>
+                        <h4>Contemporary</h4>
+                        <p>Living Space (View Gallery)</p>
                     </div>
                 </div>
-                <div class="masonry-item reveal">
-                    <img src="https://images.unsplash.com/photo-1598928506311-c55dd12a2fa0?auto=format&fit=crop&q=80&w=800" alt="Galle Fort Villa">
+                
+                <!-- Image 2: Dining Room -->
+                <div class="masonry-item reveal" data-project="dining">
+                    <img src="1000226859.jpg" alt="Elegant Dining Suite">
                     <div class="masonry-overlay">
-                        <h4>Galle Fort</h4>
-                        <p>Heritage Villa</p>
+                        <h4>Elegant</h4>
+                        <p>Dining Suite (View Gallery)</p>
                     </div>
                 </div>
-                <div class="masonry-item reveal">
-                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&q=80&w=800" alt="Rosmead Place Study">
+                
+                <!-- Image 3: Bedroom/Wardrobe -->
+                <div class="masonry-item reveal" data-project="wardrobe">
+                    <img src="1000226858.jpg" alt="Bespoke Master Wardrobe">
                     <div class="masonry-overlay">
-                        <h4>Rosmead Place</h4>
-                        <p>Private Study</p>
-                    </div>
-                </div>
-                <div class="masonry-item reveal">
-                    <img src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&q=80&w=800" alt="Port City Residence">
-                    <div class="masonry-overlay">
-                        <h4>Port City</h4>
-                        <p>Luxury Apartment</p>
+                        <h4>Bespoke</h4>
+                        <p>Master Wardrobe (View Gallery)</p>
                     </div>
                 </div>
             </div>
         </section>
+
+        <div id="projectModal" class="modal">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <div class="modal-content">
+                <button class="nav-btn prev" id="prevBtn">&#10094;</button>
+                <img id="modalImage" src="" alt="Project Gallery">
+                <button class="nav-btn next" id="nextBtn">&#10095;</button>
+            </div>
+            <div class="modal-caption-container">
+                <div class="modal-caption" id="modalCaption"></div>
+                <div class="modal-counter" id="modalCounter"></div>
+            </div>
+        </div>
 
         <section id="contact">
             <div class="section-header reveal">
@@ -683,6 +835,17 @@
                     <h4>Inquiry Received</h4>
                     <p>Our studio will contact you shortly to arrange a private consultation.</p>
                 </div>
+            </div>
+        </section>
+
+        <section id="partners" style="padding-top: 2rem; padding-bottom: 6rem; background-color: var(--color-bg); text-align: center;">
+             <div class="section-header reveal" style="margin-bottom: 3rem;">
+                <span class="section-subtitle">Exclusive Furniture Partner</span>
+            </div>
+            <div class="reveal" style="display: flex; justify-content: center; align-items: center; flex-direction: column; gap: 1rem;">
+                <img src="1000226853.jpg" alt="KCN Furniture Logo" style="max-height: 120px; object-fit: contain; filter: grayscale(100%) brightness(0.8); transition: var(--transition);">
+                <h3 style="font-family: var(--font-display); font-size: 1.8rem; color: var(--color-text-main); font-weight: 400; letter-spacing: 2px;">KCN FURNITURE (PVT) LTD</h3>
+                <p style="color: var(--color-text-muted); font-size: 0.9rem; max-width: 600px; margin: 0 auto;">Crafting bespoke luxury furniture that embodies our design philosophy, ensuring every piece is built for elegance and durability.</p>
             </div>
         </section>
     </main>
@@ -758,6 +921,91 @@
                 messageDiv.style.display = 'block';
                 
                 // Optional: In a real app, send data to backend here.
+            });
+
+            const modal = document.getElementById('projectModal');
+            const modalImg = document.getElementById('modalImage');
+            const modalCaption = document.getElementById('modalCaption');
+            const modalCounter = document.getElementById('modalCounter');
+            const closeBtn = document.getElementById('closeModal');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            // NOTE: Add your new image filenames to these arrays as you upload them to GitHub
+            const galleries = {
+                'living': {
+                    title: 'Contemporary Living',
+                    images: ['1000226860.jpg', 'living2.jpg', 'living3.jpg'] 
+                },
+                'dining': {
+                    title: 'Elegant Suite',
+                    images: ['1000226859.jpg', 'dining2.jpg']
+                },
+                'wardrobe': {
+                    title: 'Bespoke Elegance',
+                    images: ['1000226858.jpg', 'wardrobe2.jpg', 'wardrobe3.jpg']
+                }
+            };
+
+            let currentProject = '';
+            let currentIndex = 0;
+
+            function openModal(projectKey) {
+                currentProject = projectKey;
+                currentIndex = 0;
+                updateModalContent();
+                modal.style.display = 'flex';
+                // Slight delay for fade-in effect
+                setTimeout(() => modal.style.opacity = '1', 10);
+                document.body.style.overflow = 'hidden'; // Stop background scrolling
+            }
+
+            function closeModal() {
+                modal.style.opacity = '0';
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }, 400); // Matches CSS transition time
+            }
+
+            function updateModalContent() {
+                const project = galleries[currentProject];
+                modalImg.src = project.images[currentIndex];
+                
+                // Fallback: If you haven't uploaded 'living2.jpg' yet, it shows a nice placeholder instead of a broken image icon
+                modalImg.onerror = function() { 
+                    this.src = `https://placehold.co/1200x800/151515/c9a96e?text=Image+Coming+Soon`; 
+                };
+                
+                modalCaption.textContent = project.title;
+                modalCounter.textContent = `${currentIndex + 1} / ${project.images.length}`;
+            }
+
+            // Click events for the portfolio items
+            document.querySelectorAll('.masonry-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const projectKey = item.getAttribute('data-project');
+                    if (projectKey && galleries[projectKey]) {
+                        openModal(projectKey);
+                    }
+                });
+            });
+
+            closeBtn.addEventListener('click', closeModal);
+            
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex > 0) ? currentIndex - 1 : galleries[currentProject].images.length - 1;
+                updateModalContent();
+            });
+
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex < galleries[currentProject].images.length - 1) ? currentIndex + 1 : 0;
+                updateModalContent();
+            });
+
+            // Close modal if user clicks outside the image
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
             });
         });
     </script>
