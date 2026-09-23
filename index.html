@@ -180,121 +180,6 @@
             object-fit: cover;
         }
 
-        .video-break {
-            height: 70vh;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-top: 1px solid rgba(201, 169, 110, 0.1);
-            border-bottom: 1px solid rgba(201, 169, 110, 0.1);
-        }
-
-        .video-break h2 {
-            position: relative;
-            z-index: 1;
-            font-size: clamp(2rem, 5vw, 4rem);
-            color: var(--color-text-main);
-            text-transform: uppercase;
-            letter-spacing: 6px;
-            text-shadow: 2px 2px 20px rgba(0,0,0,0.8);
-            font-family: var(--font-display);
-        }
-
-        /* Modal Gallery Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            inset: 0;
-            background-color: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(15px);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-content {
-            position: relative;
-            max-width: 90%;
-            max-height: 80vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-content img {
-            max-height: 80vh;
-            max-width: 100%;
-            object-fit: contain;
-            border: 1px solid rgba(201, 169, 110, 0.3);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 2rem;
-            right: 3rem;
-            color: var(--color-text-main);
-            font-size: 3rem;
-            font-weight: 300;
-            cursor: pointer;
-            transition: var(--color-accent);
-            z-index: 2001;
-        }
-        
-        .close-modal:hover { color: var(--color-accent); }
-
-        .nav-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(13, 13, 13, 0.5);
-            border: 1px solid var(--color-accent);
-            color: var(--color-accent);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .nav-btn:hover { background: var(--color-accent); color: var(--color-bg); }
-        .nav-btn.prev { left: -70px; }
-        .nav-btn.next { right: -70px; }
-
-        .modal-caption-container {
-            margin-top: 2rem;
-            text-align: center;
-        }
-
-        .modal-caption {
-            font-family: var(--font-display);
-            font-size: 1.8rem;
-            color: var(--color-accent);
-        }
-        
-        .modal-counter {
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            color: var(--color-text-muted);
-            margin-top: 0.5rem;
-        }
-
-        @media (max-width: 768px) {
-            .nav-btn { width: 40px; height: 40px; }
-            .nav-btn.prev { left: 10px; }
-            .nav-btn.next { right: 10px; }
-            .close-modal { top: 1rem; right: 1.5rem; }
-        }
-
         #hero h1 {
             font-size: clamp(3rem, 7vw, 6.5rem);
             line-height: 1.1;
@@ -372,13 +257,12 @@
             color: var(--color-text-main);
         }
 
-        /* Scroll Reveal Utility Classes */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
             transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
-        
+
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
@@ -454,8 +338,95 @@
             padding-left: 1.5rem;
         }
 
+        .video-break {
+            height: 70vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-top: 1px solid rgba(201, 169, 110, 0.1);
+            border-bottom: 1px solid rgba(201, 169, 110, 0.1);
+        }
+
+        .video-break h2 {
+            position: relative;
+            z-index: 1;
+            font-size: clamp(2rem, 5vw, 4rem);
+            color: var(--color-text-main);
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            text-shadow: 2px 2px 20px rgba(0,0,0,0.8);
+            font-family: var(--font-display);
+        }
+
         #portfolio {
             background-color: var(--color-bg);
+        }
+
+        /* 9:16 Vertical Video Showcase */
+        .vertical-video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 60px auto;
+            width: 100%;
+        }
+
+        .vertical-video-card {
+            position: relative;
+            width: 100%;
+            max-width: 360px; /* Optimal width for a 9:16 vertical video */
+            aspect-ratio: 9 / 16;
+            border-radius: 16px;
+            overflow: hidden;
+            background: #111;
+            border: 1px solid rgba(201, 169, 110, 0.25);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+        }
+
+        .portrait-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .video-overlay-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 30px 20px 20px;
+            background: linear-gradient(to top, rgba(14, 14, 14, 0.95) 10%, rgba(14, 14, 14, 0.6) 60%, transparent 100%);
+            text-align: center;
+        }
+
+        .video-badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-accent);
+            margin-bottom: 6px;
+        }
+
+        .video-overlay-info h3 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #fff;
+            margin: 0 0 6px 0;
+            font-family: var(--font-display);
+        }
+
+        .video-overlay-info .kcn-credit {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            margin: 0;
+            letter-spacing: 0.5px;
+            text-transform: none;
+            border: none;
+            padding: 0;
         }
 
         .masonry-grid {
@@ -504,7 +475,7 @@
             text-align: center;
             font-weight: 400;
         }
-        
+
         .masonry-overlay p {
             font-size: 0.8rem;
             text-transform: uppercase;
@@ -547,13 +518,89 @@
             transform: translateY(0);
         }
 
-        .portfolio-featured-video {
-            width: 100%;
-            max-width: 1400px;
-            margin: 0 auto 4rem auto;
-            display: block;
-            border: 1px solid rgba(201, 169, 110, 0.2);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            inset: 0;
+            background-color: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(15px);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content img {
+            max-height: 80vh;
+            max-width: 100%;
+            object-fit: contain;
+            border: 1px solid rgba(201, 169, 110, 0.3);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 2rem;
+            right: 3rem;
+            color: var(--color-text-main);
+            font-size: 3rem;
+            font-weight: 300;
+            cursor: pointer;
+            transition: var(--color-accent);
+            z-index: 2001;
+        }
+
+        .close-modal:hover { color: var(--color-accent); }
+
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(13, 13, 13, 0.5);
+            border: 1px solid var(--color-accent);
+            color: var(--color-accent);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-btn:hover { background: var(--color-accent); color: var(--color-bg); }
+        .nav-btn.prev { left: -70px; }
+        .nav-btn.next { right: -70px; }
+
+        .modal-caption-container {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .modal-caption {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            color: var(--color-accent);
+        }
+
+        .modal-counter {
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            color: var(--color-text-muted);
+            margin-top: 0.5rem;
         }
 
         #contact {
@@ -571,77 +618,33 @@
             padding: 5rem 4rem;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(201, 169, 110, 0.2);
-        }
-
-        .form-group {
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 0.5rem 0;
-            background: transparent;
-            border: none;
-            border-bottom: 1px solid rgba(255,255,255,0.2);
-            color: var(--color-text-main);
-            font-family: var(--font-body);
-            font-size: 1rem;
-            font-weight: 300;
-            transition: var(--transition);
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-bottom-color: var(--color-accent);
-        }
-
-        .form-control::placeholder {
-            color: var(--color-text-muted);
-            letter-spacing: 1px;
-        }
-
-        textarea.form-control {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .submit-btn {
-            background: transparent;
-            border: 1px solid var(--color-accent);
-            color: var(--color-accent);
-            padding: 1.2rem;
-            font-family: var(--font-body);
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: var(--transition);
-            display: block;
-            width: 100%;
-            margin-top: 2rem;
-        }
-
-        .submit-btn:hover {
-            background: var(--color-accent);
-            color: var(--color-bg);
-        }
-
-        /* Custom Notification Message */
-        #form-message {
-            display: none;
             text-align: center;
-            padding: 2rem;
-            border: 1px solid var(--color-accent);
-            margin-top: 2rem;
-            background: rgba(201, 169, 110, 0.05);
         }
 
-        #form-message h4 {
-            color: var(--color-accent);
-            font-family: var(--font-display);
-            font-size: 1.8rem;
+        .contact-details p {
             margin-bottom: 0.5rem;
+        }
+
+        .contact-link {
+            color: var(--color-text-main);
+            transition: var(--transition);
+        }
+
+        .contact-link:hover {
+            color: var(--color-accent);
+        }
+
+        .social-link {
+            display: inline-block;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-text-muted);
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            color: var(--color-accent);
         }
 
         footer {
@@ -671,6 +674,11 @@
         }
 
         @media (max-width: 768px) {
+            .nav-btn { width: 40px; height: 40px; }
+            .nav-btn.prev { left: 10px; }
+            .nav-btn.next { right: 10px; }
+            .close-modal { top: 1rem; right: 1.5rem; }
+            
             .menu-toggle {
                 display: flex;
             }
@@ -707,22 +715,22 @@
             .menu-toggle.active span:nth-child(3) {
                 transform: rotate(-45deg) translate(5px, -6px);
             }
-            
+
             .about-content {
                 grid-template-columns: 1fr;
             }
             .about-image-wrapper::before {
                 display: none;
             }
-            
+
             .masonry-grid {
                 column-count: 1;
             }
-            
+
             .contact-container {
                 padding: 3rem 2rem;
             }
-            
+
             .section-title {
                 font-size: 2.5rem;
             }
@@ -795,10 +803,20 @@
             </div>
             
             <div class="reveal">
-                <video autoplay loop muted playsinline class="portfolio-featured-video">
-                    <!-- Upload your new video to GitHub as portfolio-video.mp4 -->
-                    <source src="portfolio-video.mp4" type="video/mp4">
-                </video>
+                <!-- 9:16 Vertical Project Showcase -->
+                <div class="vertical-video-container">
+                    <div class="vertical-video-card">
+                        <video autoplay muted loop playsinline class="portrait-video">
+                            <!-- Ensure your 9:16 video is named portfolio-video.mp4 -->
+                            <source src="portfolio-video.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-overlay-info">
+                            <span class="video-badge">Featured Walkthrough</span>
+                            <h3>Exclusive Residence Tour</h3>
+                            <p class="kcn-credit">Furniture supplied by KCN Furniture</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             
             <div class="masonry-grid">
@@ -853,23 +871,19 @@
                 <h2 class="section-title">Begin the Journey</h2>
             </div>
             <div class="contact-container reveal" style="transition-delay: 0.2s;">
-                <form id="inquiryForm">
-                    <div class="form-group">
-                        <input type="text" id="name" class="form-control" placeholder="Distinguished Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="email" class="form-control" placeholder="Email Address" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="message" class="form-control" placeholder="Describe your property and vision..." required></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">Request a Private Consultation</button>
-                </form>
+                <h3 style="color: var(--color-accent); font-family: var(--font-display); font-size: 2.5rem; margin-bottom: 2rem;">Connect with us</h3>
                 
-                <!-- Custom elegant message replacing alert() -->
-                <div id="form-message">
-                    <h4>Inquiry Received</h4>
-                    <p>Our studio will contact you shortly to arrange a private consultation.</p>
+                <div class="contact-details" style="color: var(--color-text-main); font-size: 1.1rem; line-height: 2;">
+                    <p>25/13 CSA Perera Mawatha, Moratuwa, Sri Lanka</p>
+                    <p><a href="mailto:interiorsbykavishxavier@gmail.com" class="contact-link">interiorsbykavishxavier@gmail.com</a></p>
+                    <p><a href="tel:+94772742591" class="contact-link">+94 77 274 2591</a></p>
+                    <p style="color: var(--color-accent); font-size: 0.9rem; margin-top: 1.5rem; text-transform: uppercase; letter-spacing: 2px;">Monday to Sunday 9am – 5pm</p>
+                </div>
+
+                <div class="social-links" style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(201, 169, 110, 0.2); display: flex; flex-direction: column; gap: 1.5rem;">
+                    <a href="https://www.instagram.com/interiorsbykavishxavier/" target="_blank" class="social-link">Interiors By Kavish Xavier (Instagram)</a>
+                    <a href="https://www.facebook.com/people/Interiors-by-Kavish-Xavier/61594871001660/" target="_blank" class="social-link">Interiors By Kavish Xavier (Facebook)</a>
+                    <a href="https://www.instagram.com/kcnfurniture/" target="_blank" class="social-link">Furniture Partner - KCN Furniture (Instagram)</a>
                 </div>
             </div>
         </section>
@@ -946,19 +960,7 @@
                 document.querySelectorAll('#hero .reveal').forEach(el => el.classList.add('active'));
             }, 100);
 
-            // 4. Form Submission Handling (Replacing alert)
-            const form = document.getElementById('inquiryForm');
-            const messageDiv = document.getElementById('form-message');
-
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                // Hide form, show elegant success message
-                form.style.display = 'none';
-                messageDiv.style.display = 'block';
-                
-                // Optional: In a real app, send data to backend here.
-            });
-
+            // Modal Gallery Logic
             const modal = document.getElementById('projectModal');
             const modalImg = document.getElementById('modalImage');
             const modalCaption = document.getElementById('modalCaption');
