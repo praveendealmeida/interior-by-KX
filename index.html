@@ -530,6 +530,32 @@
             transform: translateY(0);
         }
 
+        .kcn-credit {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-text-muted);
+            margin-top: 1rem;
+            transform: translateY(20px);
+            transition: var(--transition);
+            transition-delay: 0.2s;
+            border-top: 1px solid rgba(201, 169, 110, 0.3);
+            padding-top: 0.5rem;
+        }
+
+        .masonry-item:hover .kcn-credit {
+            transform: translateY(0);
+        }
+
+        .portfolio-featured-video {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto 4rem auto;
+            display: block;
+            border: 1px solid rgba(201, 169, 110, 0.2);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
         #contact {
             background-color: var(--color-surface);
             background-image: linear-gradient(rgba(21, 21, 21, 0.9), rgba(21, 21, 21, 0.9)), url('https://images.unsplash.com/photo-1600210491369-e753d80a41f3?auto=format&fit=crop&q=80&w=2000');
@@ -768,6 +794,13 @@
                 <h2 class="section-title">Selected Works</h2>
             </div>
             
+            <div class="reveal">
+                <video autoplay loop muted playsinline class="portfolio-featured-video">
+                    <!-- Upload your new video to GitHub as portfolio-video.mp4 -->
+                    <source src="portfolio-video.mp4" type="video/mp4">
+                </video>
+            </div>
+            
             <div class="masonry-grid">
                 <!-- Image 1: Living Room -->
                 <div class="masonry-item reveal" data-project="living">
@@ -775,6 +808,7 @@
                     <div class="masonry-overlay">
                         <h4>Contemporary</h4>
                         <p>Living Space (View Gallery)</p>
+                        <p class="kcn-credit">Furniture supplied by KCN Furniture</p>
                     </div>
                 </div>
                 
@@ -784,15 +818,17 @@
                     <div class="masonry-overlay">
                         <h4>Elegant</h4>
                         <p>Dining Suite (View Gallery)</p>
+                        <p class="kcn-credit">Furniture supplied by KCN Furniture</p>
                     </div>
                 </div>
                 
                 <!-- Image 3: Bedroom/Wardrobe -->
                 <div class="masonry-item reveal" data-project="wardrobe">
-                    <img src="1000226858.jpg" alt="Bespoke Master Wardrobe">
+                    <img src="1000226858.jfif" alt="Bespoke Master Wardrobe">
                     <div class="masonry-overlay">
                         <h4>Bespoke</h4>
                         <p>Master Wardrobe (View Gallery)</p>
+                        <p class="kcn-credit">Furniture supplied by KCN Furniture</p>
                     </div>
                 </div>
             </div>
@@ -931,19 +967,24 @@
             const prevBtn = document.getElementById('prevBtn');
             const nextBtn = document.getElementById('nextBtn');
             
-            // NOTE: Add your new image filenames to these arrays as you upload them to GitHub
             const galleries = {
                 'living': {
-                    title: 'Contemporary Living',
-                    images: ['1000226860.jpg', 'living2.jpg', 'living3.jpg'] 
+                    title: 'Contemporary Living Space',
+                    images: [
+                        '1000226860.jpg', 'living2.jpg', 'living3.jpg', 'living4.jpg', 
+                        'living5.jpg', 'living6.jpg', 'living7.jpg', 'living8.jpg', 'living9.jpg'
+                    ] 
                 },
                 'dining': {
-                    title: 'Elegant Suite',
-                    images: ['1000226859.jpg', 'dining2.jpg']
+                    title: 'Elegant Dining Suite',
+                    images: [
+                        '1000226859.jpg', 'dining2.jpg', 'dining3.jpg', 'dining4.jpg', 'dining5.jpg', 
+                        'dining6.jpg', 'dining7.jpg', 'dining8.jpg', 'dining9.jpg', 'dining10.jpg'
+                    ]
                 },
                 'wardrobe': {
-                    title: 'Bespoke Elegance',
-                    images: ['1000226858.jpg', 'wardrobe2.jpg', 'wardrobe3.jpg']
+                    title: 'Bespoke Master Wardrobe',
+                    images: ['1000226858.jfif', 'wardrobe2.jfif', 'wardrobe3.jfif']
                 }
             };
 
